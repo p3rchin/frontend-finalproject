@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="saveFirstStep()">
+    <span class="text-lg font-medium leading-none text-gray-900">Detalles de la homologación</span>
+    <div class="grid gap-4 mb-4 sm:grid-cols-2 mt-5">
+        <div>
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Programa de procedencia</label>
+            <select formControlName="programaProcedencia"  id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+              <option selected>Selecciona un programa</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="FR">France</option>
+              <option value="DE">Germany</option>
+            </select>
+        </div>
+        <div>
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Programa de interés</label>
+            <select formControlName="programaInteres" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
+              <option selected>Selecciona un programa</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="FR">France</option>
+              <option value="DE">Germany</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit"
+        class="text-white bg-green-500 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+        Siguiente paso: Documentación
+    </button>
+</form>
