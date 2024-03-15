@@ -8,6 +8,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomologationsComponent } from './pages/homologations/homologations.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TestGraphicComponent } from './components/test-graphic/test-graphic.component';
+import { HomologationsviewComponent } from './components/homologationsview/homologationsview.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TestGraphicComponent } from './components/test-graphic/test-graphic.com
     DashboardComponent,
     HomologationsComponent,
     TestGraphicComponent,
+    HomologationsviewComponent,
   ],
   imports: [
     CommonModule,
