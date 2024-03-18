@@ -39,9 +39,12 @@
       data-popper-placement="bottom">
       <div class="px-4 py-3" role="none">
          <p class="text-sm text-gray-900" role="none">
-            Ricaldo Aljoneta
+            {{
+               user?.nombre
+            }}
          </p>
-         <p class="text-sm font-medium text-gray-900" role="none">ricaldoaljoneta421@gmail.com
+         <p class="text-sm font-medium text-gray-900" role="none">{{user?.email
+            }}
          </p>
       </div>
       <ul class="py-1" role="none">

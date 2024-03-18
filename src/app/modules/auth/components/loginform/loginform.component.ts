@@ -43,7 +43,7 @@ export class LoginformComponent {
       this.userService.loginUser(this.userLogin).subscribe({
         next: (data) => {
           if (data.data) {
-            alert("Inicio de sesión exitoso");
+            this.router.navigate(['student/option'])
           } else {
             alert("Inicio de sesión fallido. Revisa las credenciales que digitaste.");
           }
