@@ -25,10 +25,47 @@ export class LoginformComponent {
   }
 
   @Input() titleLogin: string = "";
-  @Input() type: boolean = false;
+  @Input() type: string = "user";
 
 
   loginUser() {
+    if (this.form.valid) {
+      const { emailAddress, password } = this.form.getRawValue();
+      this.userLogin = { ...this.userLogin, email: emailAddress, password: password };
+
+      if (this.type === "admin") {
+        this.userService.loginAdmin(this.userLogin).subscribe({
+          next: (data) => {
+            if (data.data) {
+              this.router.navigate(['admin']);
+            } else {
+              alert("Inicio de sesión fallido. Revisa las credenciales que digitaste.");
+            }
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        });
+      } else {
+        this.userService.loginUser(this.userLogin).subscribe({
+          next: (data) => {
+            if (data.data) {
+              this.router.navigate(['student/option']);
+            } else {
+              alert("Inicio de sesión fallido. Revisa las credenciales que digitaste.");
+            }
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        });
+      }
+    } else {
+      this.form.markAllAsTouched();
+    }
+  }
+
+  loginAdmin() {
     console.log(this.form)
     if (this.form.valid) {
       const {
@@ -40,10 +77,10 @@ export class LoginformComponent {
         password: password
       }
       console.log(this.userLogin)
-      this.userService.loginUser(this.userLogin).subscribe({
+      this.userService.loginAdmin(this.userLogin).subscribe({
         next: (data) => {
           if (data.data) {
-            this.router.navigate(['student/option'])
+            this.router.navigate(['admin'])
           } else {
             alert("Inicio de sesión fallido. Revisa las credenciales que digitaste.");
           }
@@ -57,4 +94,5 @@ export class LoginformComponent {
       this.form.markAllAsTouched();
     }
   }
+
 }

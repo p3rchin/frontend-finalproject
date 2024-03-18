@@ -44,10 +44,10 @@
                     <p class="text-sm font-light text-gray-500 text-center">
                         ¿Aún no tienes cuenta? <a href="auth/register"
                             class="font-medium text-primary-600 hover:underline">Regístrate</a> | <a href="auth"
-                            class="font-medium text-primary-600 hover:underline">Volver</a><br><a *ngIf="type"
+                            class="font-medium text-primary-600 hover:underline">Volver</a><br><a *ngIf="type === 'admin'"
                             href="auth/adminlogin" class="font-medium text-primary-600 hover:underline">Ingresa como
-                            administrador</a><a *ngIf="!type" href="auth/login"
-                            class="font-medium text-primary-600 hover:underline">Ingresa como usuario</a>
+                            usuario</a><a *ngIf="type === 'user'" href="auth/login"
+                            class="font-medium text-primary-600 hover:underline">Ingresa como administrador</a>
                     </p>
                 </form>
             </div>
