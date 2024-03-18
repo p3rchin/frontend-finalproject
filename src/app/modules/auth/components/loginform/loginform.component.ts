@@ -25,8 +25,12 @@ export class LoginformComponent {
   }
 
   @Input() titleLogin: string = "";
-  @Input() type: string = "user";
+  @Input() type: string = "";
 
+  changeType() {
+    this.type = this.type === 'user' ? 'admin' : 'user';
+    this.titleLogin = this.type === 'admin' ? 'Inicia sesión como administrador' : 'Iniciar sesión';
+  }
 
   loginUser() {
     if (this.form.valid) {

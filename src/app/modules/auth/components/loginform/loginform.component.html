@@ -44,10 +44,9 @@
                     <p class="text-sm font-light text-gray-500 text-center">
                         ¿Aún no tienes cuenta? <a href="auth/register"
                             class="font-medium text-primary-600 hover:underline">Regístrate</a> | <a href="auth"
-                            class="font-medium text-primary-600 hover:underline">Volver</a><br><a *ngIf="type === 'admin'"
-                            href="auth/adminlogin" class="font-medium text-primary-600 hover:underline">Ingresa como
-                            usuario</a><a *ngIf="type === 'user'" href="auth/login"
-                            class="font-medium text-primary-600 hover:underline">Ingresa como administrador</a>
+                            class="font-medium text-primary-600 hover:underline">Volver</a><br><a href="javascript:void(0);" (click)="changeType()" class="font-medium text-primary-600 hover:underline">
+                                {{ type === 'admin' ? 'Ingresa como usuario' : 'Ingresa como administrador' }}
+                              </a>
                     </p>
                 </form>
             </div>
