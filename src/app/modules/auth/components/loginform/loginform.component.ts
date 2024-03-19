@@ -69,6 +69,7 @@ export class LoginformComponent {
     }
   }
 
+  /*
   loginAdmin() {
     console.log(this.form)
     if (this.form.valid) {
@@ -98,5 +99,5 @@ export class LoginformComponent {
       this.form.markAllAsTouched();
     }
   }
-
+  */
 }
