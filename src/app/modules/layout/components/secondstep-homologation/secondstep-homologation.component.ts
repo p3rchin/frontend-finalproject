@@ -10,15 +10,17 @@ import { ProcessService } from 'src/app/services/process.service';
   styleUrls: ['./secondstep-homologation.component.scss']
 })
 export class SecondstepHomologationComponent {
+  blob = new Blob(['contenido del archivo'], { type: 'tipo/mime' });
+
   startProcess: startProcess = {
 
     id: 0,
     programaProcedencia: "",
     programaInteres: "",
-    rutaCertificadoNotas: "",
-    rutaContenidoPrograma: "",
-    rutaCertificadoConducta: "",
-    rutaSolicitudMotivacion: "",
+    rutaCertificadoNotas: new File([this.blob], 'nombre-del-archivo.pdf'),
+    rutaContenidoPrograma: new File([this.blob], 'nombre-del-archivo.pdf'),
+    rutaCertificadoConducta: new File([this.blob], 'nombre-del-archivo.pdf'),
+    rutaSolicitudMotivacion: new File([this.blob], 'nombre-del-archivo.pdf'),
     idEstudiante: 0
   }
   constructor(private router: Router, private formBuilder: FormBuilder, private processService: ProcessService) {
@@ -44,14 +46,54 @@ export class SecondstepHomologationComponent {
       } = this.form.getRawValue();
       this.startProcess = {
         ... this.startProcess,
-        rutaCertificadoNotas: rutaCertificadoNotas,
-        rutaContenidoPrograma: rutaContenidoPrograma,
-        rutaCertificadoConducta: rutaCertificadoConducta,
-        rutaSolicitudMotivacion: rutaSolicitudMotivacion
       }
+
+      if (this.startProcess.rutaCertificadoNotas.name === 'nombre-del-archivo.pdf' && this.startProcess.rutaCertificadoConducta.name === 'nombre-del-archivo.pdf' && this.startProcess.rutaSolicitudMotivacion.name === 'nombre-del-archivo.pdf' && this.startProcess.rutaContenidoPrograma.name === 'nombre-del-archivo.pdf') {
+        alert("Selecciona todos los archivos");
+      }
+
       this.programs.emit(this.startProcess)
     } else {
+      alert("Selecciona todos los archivos");
       this.form.markAllAsTouched();
     }
+  }
+
+  changeFileOne(event: any) {
+    let file = event.target.files[0];
+    let fileExtension = file.name.split('.').pop();
+
+    if (fileExtension.toLowerCase() !== 'pdf') {
+      alert('Por favor, sube un archivo PDF.');
+      return;
+    } else {
+      this.startProcess = {
+        ...this.startProcess,
+        rutaCertificadoNotas: file,
+      }
+      console.log(this.startProcess);
+    }
+  }
+
+  changeFileTwo(event: any) {
+    this.startProcess = {
+      ...this.startProcess,
+      rutaContenidoPrograma: event.target.files[0],
+    }
+    console.log(this.startProcess);
+  }
+  changeFileThree(event: any) {
+    this.startProcess = {
+      ...this.startProcess,
+      rutaCertificadoConducta: event.target.files[0],
+    }
+    console.log(this.startProcess);
+  }
+  changeFileFour(event: any) {
+    this.startProcess = {
+      ...this.startProcess,
+      rutaSolicitudMotivacion: event.target.files[0],
+    }
+    console.log(this.startProcess);
   }
 }

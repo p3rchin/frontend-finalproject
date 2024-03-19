@@ -13,5 +13,10 @@ export interface Process {
     updated_at: string;
 }
 
-export interface startProcess extends Omit<Process, "activo" | "created_at" | "updated_at"> {
+export interface startProcess extends Omit<Process, "rutaCertificadoNotas" | "rutaContenidoPrograma" | "rutaCertificadoConducta" | "rutaSolicitudMotivacion" | "activo" | "created_at" | "updated_at"> {
+
+    rutaCertificadoNotas: File;
+    rutaContenidoPrograma: File;
+    rutaCertificadoConducta: File;
+    rutaSolicitudMotivacion: File;
 }
