@@ -18,6 +18,8 @@ export class RepeatCardComponent {
     created_at: '',
     updated_at: ''
   }
+  
+  isOpen = false;
 
   
 }

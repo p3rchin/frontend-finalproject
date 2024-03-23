@@ -6,8 +6,36 @@
     </div>
     <div class="flex justify-end mt-4">
       <button type="submit"
-              class="text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition duration-300">
+              class="text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition duration-300" data-dropdown-toggle="dropdown-user " (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
         Ver detalles
       </button>
     </div>
   </div>
+  <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+    <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-300 rounded-lg shadow-lg" id="homologacion-detalle"
+         data-popper-placement="bottom">
+        <div class="px-4 py-3" role="none">
+            <p class="text-lg font-semibold text-gray-900" role="none">
+              Detalles de Homologación
+            </p>
+        </div>
+        <ul class="py-1" role="none">
+            <li class="px-4 py-2">
+               <span class="block text-sm text-gray-900">Créditos: </span>
+               <span class="block text-sm font-medium text-gray-700">10</span>
+            </li>
+            <li class="px-4 py-2">
+               <span class="block text-sm text-gray-900">Semestre: </span>
+               <span class="block text-sm font-medium text-gray-700">2024-1</span>
+            </li>
+            <li class="px-4 py-2">
+               <span class="block text-sm text-gray-900">Observación: </span>
+               <span class="block text-sm font-medium text-gray-700">Aprobado con nota</span>
+            </li>
+            <li class="px-4 py-2">
+               <span class="block text-sm text-gray-900">Estado: </span>
+               <span class="block text-sm font-medium text-green-500">Aprobado</span>
+            </li>
+        </ul>
+    </div>
+</ng-template>
