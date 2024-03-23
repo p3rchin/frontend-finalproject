@@ -34,7 +34,17 @@ export class RepeatCardComponent {
     }
   }
   
-  isOpen = false;
+
+isOpen = false;
+
+mouseEnter() {
+  this.isOpen = true;
+}
+
+mouseLeave() {
+  this.isOpen = false;
+}
+
 
 
 }
