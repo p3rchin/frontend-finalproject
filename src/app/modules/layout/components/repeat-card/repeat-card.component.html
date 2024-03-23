@@ -1,8 +1,8 @@
 <div class="flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow p-5 h-full">
     <div>
-      <span class="text-xl font-bold tracking-tight text-gray-900">Materia: MAT202</span>
-      <p class="mt-2 font-bold text-gray-900">Nota: <span class="font-light">4</span></p>
-      <p class="font-bold text-gray-900">Estado: <span class="font-light">A</span></p>
+      <span class="text-xl font-bold tracking-tight text-gray-900">Materia: {{homologation.materia.nombre}}</span>
+      <p class="mt-2 font-bold text-gray-900">Nota: <span class="font-light">{{homologation.nota}}</span></p>
+      <p class="font-bold text-gray-900">Programa: <span class="font-light">{{homologation.materia.programa.nombre}}</span></p>
     </div>
     <div class="flex justify-end mt-4">
       <button type="submit"
@@ -22,19 +22,19 @@
         <ul class="py-1" role="none">
             <li class="px-4 py-2">
                <span class="block text-sm text-gray-900">Créditos: </span>
-               <span class="block text-sm font-medium text-gray-700">10</span>
+               <span class="block text-sm font-medium text-gray-700">{{homologation.materia.creditos}}</span>
             </li>
             <li class="px-4 py-2">
                <span class="block text-sm text-gray-900">Semestre: </span>
-               <span class="block text-sm font-medium text-gray-700">2024-1</span>
+               <span class="block text-sm font-medium text-gray-700">{{homologation.materia.semestre}}</span>
             </li>
             <li class="px-4 py-2">
                <span class="block text-sm text-gray-900">Observación: </span>
-               <span class="block text-sm font-medium text-gray-700">Aprobado con nota</span>
+               <span class="block text-sm font-medium text-gray-700">{{homologation.observacion}}</span>
             </li>
             <li class="px-4 py-2">
                <span class="block text-sm text-gray-900">Estado: </span>
-               <span class="block text-sm font-medium text-green-500">Aprobado</span>
+               <span class="block text-sm font-medium text-green-500">{{homologation.estado}}</span>
             </li>
         </ul>
     </div>

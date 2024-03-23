@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Homologations } from 'src/app/interfaces/homologations';
+import { HomologationView, Homologations } from 'src/app/interfaces/homologations';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./cardview-homologation.component.scss']
 })
 export class CardviewHomologationComponent implements OnInit{
-  listHomologations: Homologations[] = [];
+  listHomologations: HomologationView[] = [];
   user:User|null=null
   constructor(private userService: UserService) {
 

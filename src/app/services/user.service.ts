@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { User, UserCreate, UserLogin } from '../interfaces/user';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ResponseList, ResponseObject } from '../interfaces/responses';
-import { Homologations } from '../interfaces/homologations';
+import { HomologationView, Homologations } from '../interfaces/homologations';
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +48,10 @@ export class UserService {
     return this.http.get<ResponseObject<User>>(url)
   }
 
-  getHomologationsByUserId(id: number): Observable<ResponseList<Homologations>> {
+  getHomologationsByUserId(id: number): Observable<ResponseList<HomologationView>> {
     const url = `http://127.0.0.1:8000/api/user/viewHomologations`;
     let params = new HttpParams();
     params = params.append('id', id);
-    return this.http.get<ResponseList<Homologations>>(url, { params: params })
+    return this.http.get<ResponseList<HomologationView>>(url, { params: params })
   }
 }

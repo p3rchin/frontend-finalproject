@@ -9,7 +9,7 @@
       <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
         <!-- Tarjeta de homologación 1 -->
         <ng-container *ngFor="let card of listHomologations">
-          <app-repeat-card></app-repeat-card>
+          <app-repeat-card [homologation]="card"></app-repeat-card>
         </ng-container>
         
 
