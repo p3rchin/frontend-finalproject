@@ -10,9 +10,6 @@ import { Programs } from '../interfaces/programs';
 export class ProgramsService {
 
   constructor(private http: HttpClient) {
-
-
-
   }
 
   getPrograms(): Observable<ResponseList<Programs>> {

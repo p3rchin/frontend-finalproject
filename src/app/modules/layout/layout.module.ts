@@ -12,6 +12,7 @@ import { CardviewHomologationComponent } from './components/cardview-homologatio
 import { ThirdstepHomologationComponent } from './components/thirdstep-homologation/thirdstep-homologation.component';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RepeatCardComponent } from './components/repeat-card/repeat-card.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardviewHomologationComponent,
     ThirdstepHomologationComponent,
     ViewProfileComponent,
+    RepeatCardComponent,
   ],
   imports: [
     CommonModule,

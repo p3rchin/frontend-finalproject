@@ -8,16 +8,16 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  user:User|null=null
-  constructor(private userService:UserService){
-    
+  user: User | null = null
+  constructor(private userService: UserService) {
+
   }
   ngOnInit(): void {
-    const local=localStorage.getItem('UserLogin')
-    const userN=JSON.parse(local?local:"")
-    this.userService.getUserById(userN.id).subscribe(data=>{
-      if(data){
-        this.user=data.data;
+    const local = localStorage.getItem('UserLogin')
+    const userN = JSON.parse(local ? local : "")
+    this.userService.getUserById(userN.id).subscribe(data => {
+      if (data) {
+        this.user = data.data;
         this.userService.user$.next(this.user)
       }
     })

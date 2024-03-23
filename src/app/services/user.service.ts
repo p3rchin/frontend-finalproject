@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User, UserCreate, UserLogin } from '../interfaces/user';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ResponseList, ResponseObject } from '../interfaces/responses';
+import { Homologations } from '../interfaces/homologations';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class UserService {
     params = params.append("password", user.password);
     return this.http.get<ResponseObject<User>>(url, { params: params }).pipe(
       tap(user => {
-        localStorage.setItem("UserLogin",JSON.stringify(user.data))
+        localStorage.setItem("UserLogin", JSON.stringify(user.data))
       })
     );
   }
@@ -38,12 +39,19 @@ export class UserService {
     params = params.append("password", user.password);
     return this.http.get<ResponseObject<User>>(url, { params: params }).pipe(
       tap(user => {
-        localStorage.setItem("AdminLogin",JSON.stringify(user.data))
+        localStorage.setItem("AdminLogin", JSON.stringify(user.data))
       })
     );
   }
-  getUserById(id: number): Observable<ResponseObject<User>>{
+  getUserById(id: number): Observable<ResponseObject<User>> {
     const url = `http://127.0.0.1:8000/api/usuario/${id}`;
     return this.http.get<ResponseObject<User>>(url)
+  }
+
+  getHomologationsByUserId(id: number): Observable<ResponseList<Homologations>> {
+    const url = `http://127.0.0.1:8000/api/user/viewHomologations`;
+    let params = new HttpParams();
+    params = params.append('id', id);
+    return this.http.get<ResponseList<Homologations>>(url, { params: params })
   }
 }
