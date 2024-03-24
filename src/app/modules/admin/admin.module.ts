@@ -11,6 +11,11 @@ import { HomologationsComponent } from './pages/homologations/homologations.comp
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TestGraphicComponent } from './components/test-graphic/test-graphic.component';
 import { HomologationsviewComponent } from './components/homologationsview/homologationsview.component';
+import { StudentsviewComponent } from './components/studentsview/studentsview.component';
+import { StudentsComponent } from './pages/students/students.component';
+import { ProgramsComponent } from './pages/programs/programs.component';
+import { ProgramsviewComponent } from './components/programsview/programsview.component';
+
 
 
 @NgModule({
@@ -20,6 +25,11 @@ import { HomologationsviewComponent } from './components/homologationsview/homol
     HomologationsComponent,
     TestGraphicComponent,
     HomologationsviewComponent,
+    StudentsviewComponent,
+    StudentsComponent,
+    ProgramsComponent,
+    ProgramsviewComponent,
+
   ],
   imports: [
     CommonModule,

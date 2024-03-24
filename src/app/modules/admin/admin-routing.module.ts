@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomologationsComponent } from './pages/homologations/homologations.component';
+import { StudentsComponent } from './pages/students/students.component';
+import { ProgramsComponent } from './pages/programs/programs.component';
 
 const routes: Routes = [{
   path: "",
@@ -14,6 +16,14 @@ const routes: Routes = [{
     {
       path: "homologations",
       component: HomologationsComponent
+    },
+    {
+      path: "students",
+      component: StudentsComponent
+    },
+    {
+      path: "programs",
+      component: ProgramsComponent
     }
   ]
 }];

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User, UserCreate, UserLogin, UserProcess } from '../interfaces/user';
+import { Students, User, UserCreate, UserLogin, UserProcess } from '../interfaces/user';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ResponseList, ResponseObject } from '../interfaces/responses';
 import { HomologationView, Homologations } from '../interfaces/homologations';
@@ -58,5 +58,10 @@ export class UserService {
   getusersWithProcess(): Observable<ResponseList<UserProcess>> {
     const url = `http://127.0.0.1:8000/api/user/userWithProcess`;
     return this.http.get<ResponseList<UserProcess>>(url)
+  }
+
+  getStudents(): Observable<ResponseList<Students>> {
+    const url = `http://127.0.0.1:8000/api/usuario`;
+    return this.http.get<ResponseList<Students>>(url)
   }
 }

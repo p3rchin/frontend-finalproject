@@ -44,3 +44,19 @@ export interface UserLogin {
     email: string;
     password: string;
 }
+
+export interface Students {
+    id: number;
+    nombre: string;
+    apellido: string;
+    telefono: string;
+    id_tipo_identificacion: number;
+    numero_identificacion: string;
+    id_rol: number;
+    email: string;
+    direccion: string;
+    activo: boolean;
+    created_at: string;
+    updated_at: string;
+}
+
