@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomologationsviewComponent {
 
+
+  isOpen = false;
+
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
 }
