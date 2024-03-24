@@ -9,8 +9,11 @@ export class HomologationsviewComponent {
 
 
   isOpen = false;
+  isOpenHomologation = false;
 
-  toggleDropdown() {
-    this.isOpen = !this.isOpen;
+  toggleHomologationOverlay() {
+    this.isOpenHomologation = !this.isOpenHomologation;
   }
+
+
 }

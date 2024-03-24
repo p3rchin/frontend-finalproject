@@ -1,11 +1,10 @@
 <section class="bg-gray-50  p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <!-- Start coding here -->
         <div class="bg-white  relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                 <div class="w-full md:w-1/2">
                     <form class="flex items-center">
-                        <label for="simple-search" class="sr-only">Search</label>
+                        <label for="simple-search" class="sr-only">Buscar</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor"
@@ -64,12 +63,15 @@
                                         class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
                                         <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
                                             <li>
-                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Descargar documentos</a>
+                                                <a class="block py-2 px-4 hover:bg-gray-100 clickable-link">Descargar
+                                                    documentos</a>
                                             </li>
                                         </ul>
                                         <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
                                             <li>
-                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Gestionar homologación</a>
+                                                <a class="block py-2 px-4 hover:bg-gray-100 clickable-link"
+                                                    (click)="toggleHomologationOverlay(); isOpen=false">Gestionar
+                                                    homologación</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -109,8 +111,8 @@
                             class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">2</a>
                     </li>
                     <li>
-                        <a href="#" aria-current="page"
-                            class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 ">3</a>
+                        <a href="#"
+                            class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">3</a>
                     </li>
                     <li>
                         <a href="#"
@@ -134,6 +136,58 @@
                     </li>
                 </ul>
             </nav>
+        </div>
+    </div>
+    <div *ngIf="isOpenHomologation" id="crud-modal" tabindex="-1" aria-hidden="true"
+        class="flex items-center justify-center overflow-y-auto overflow-x-hidden fixed inset-0 z-50">
+        <div class="relative p-4 w-full max-w-md max-h-full bg-white rounded-lg shadow">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                <div class="flex-1 text-center">
+                <span class="text-lg font-semibold text-gray-900 text-center">Homologación de materias</span>
+            </div>
+                <button (click)="isOpenHomologation = false" type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Cerrar</span>
+                </button>
+            </div>
+            <form class="p-4 md:p-5">
+                <!-- Materia #1 -->
+                <div class="grid gap-4 mb-4 grid-cols-2 items-end">
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="materia" class="block text-sm font-medium text-gray-900">Materia</label>
+                        <select id="materia" class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg">
+                            <option>Matemáticas</option>
+                            <option>Literatura</option>
+                            <option>Ciencias</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="nota" class="block text-sm font-medium text-gray-900">Nota</label>
+                        <input type="number" id="nota"
+                            class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg"
+                            placeholder="Nota obtenida">
+                    </div>
+                    <div class="col-span-2">
+                        <label for="observaciones" class="block text-sm font-medium text-gray-900">Observaciones</label>
+                        <textarea id="observaciones" rows="2"
+                            class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg"
+                            placeholder="Observaciones"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <button type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
+                      + Añadir otra materia
+                    </button>
+                    <button type="submit" class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                      Homologar materias
+                    </button>
+                  </div>
+            </form>
         </div>
     </div>
 </section>
