@@ -40,3 +40,14 @@ export interface HomologationView {
 export interface HomologationCreate extends Omit<Homologations, "estado" | "activo" | "created_at" | "updated_at"> {
 }
 
+export interface Homologacion {
+    id_estudiante: number;
+    id_materia: number;
+    nota: string;
+    observacion: string;
+}
+
+export interface HomologacionesRequest {
+    homologaciones: Homologacion[];
+}
+

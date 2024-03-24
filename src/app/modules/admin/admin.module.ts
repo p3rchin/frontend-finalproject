@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 
+import { FormsModule } from '@angular/forms';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -23,7 +25,8 @@ import { HomologationsviewComponent } from './components/homologationsview/homol
     CommonModule,
     AdminRoutingModule,
     OverlayModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FormsModule
   ]
 })
 export class AdminModule {

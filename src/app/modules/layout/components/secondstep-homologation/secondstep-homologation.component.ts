@@ -82,6 +82,7 @@ export class SecondstepHomologationComponent {
     }
     console.log(this.startProcess);
   }
+
   changeFileThree(event: any) {
     this.startProcess = {
       ...this.startProcess,
@@ -89,6 +90,7 @@ export class SecondstepHomologationComponent {
     }
     console.log(this.startProcess);
   }
+  
   changeFileFour(event: any) {
     this.startProcess = {
       ...this.startProcess,
