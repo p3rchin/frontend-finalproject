@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User, UserCreate, UserLogin } from '../interfaces/user';
+import { User, UserCreate, UserLogin, UserProcess } from '../interfaces/user';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ResponseList, ResponseObject } from '../interfaces/responses';
 import { HomologationView, Homologations } from '../interfaces/homologations';
@@ -12,15 +12,13 @@ export class UserService {
   user$ = new BehaviorSubject<User | null>(null);
   user = this.user$.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-
-
-  }
   registerUser(user: UserCreate): Observable<any> {
     const url = "http://127.0.0.1:8000/api/usuario";
     return this.http.post<any>(url, user);
   }
+
   loginUser(user: UserLogin): Observable<ResponseObject<User>> {
     const url = "http://127.0.0.1:8000/api/user/loginUser";
     let params = new HttpParams();
@@ -32,6 +30,7 @@ export class UserService {
       })
     );
   }
+  
   loginAdmin(user: UserLogin): Observable<ResponseObject<User>> {
     const url = "http://127.0.0.1:8000/api/user/loginAdmin";
     let params = new HttpParams();
@@ -43,6 +42,7 @@ export class UserService {
       })
     );
   }
+  
   getUserById(id: number): Observable<ResponseObject<User>> {
     const url = `http://127.0.0.1:8000/api/usuario/${id}`;
     return this.http.get<ResponseObject<User>>(url)
@@ -53,5 +53,10 @@ export class UserService {
     let params = new HttpParams();
     params = params.append('id', id);
     return this.http.get<ResponseList<HomologationView>>(url, { params: params })
+  }
+
+  getusersWithProcess(): Observable<ResponseList<UserProcess>> {
+    const url = `http://127.0.0.1:8000/api/user/userWithProcess`;
+    return this.http.get<ResponseList<UserProcess>>(url)
   }
 }

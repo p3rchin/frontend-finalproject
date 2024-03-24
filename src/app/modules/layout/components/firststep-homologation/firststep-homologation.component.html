@@ -5,14 +5,14 @@
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Programa de procedencia</label>
             <select formControlName="programaProcedencia"  id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
                 <option value="">Selecciona un programa</option>
-                <option *ngFor="let program of listPrograms" [value]="program.id">{{program.nombre}}</option>
+                <option *ngFor="let program of listPrograms" [value]="program.nombre">{{program.nombre}}</option>
             </select>
         </div>
         <div>
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Programa de interés</label>
             <select formControlName="programaInteres" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5">
                 <option value="">Selecciona un programa</option>
-                <option *ngFor="let program of listPrograms" [value]="program.id">{{program.nombre}}</option>
+                <option *ngFor="let program of listPrograms" [value]="program.nombre">{{program.nombre}}</option>
             </select>
         </div>
     </div>

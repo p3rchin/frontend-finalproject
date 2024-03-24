@@ -16,7 +16,7 @@
                             </div>
                             <input type="text" id="simple-search"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2"
-                                placeholder="Search" required="">
+                                placeholder="Buscar" required="">
                         </div>
                     </form>
                 </div>
@@ -38,46 +38,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b">
-                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">27</th>
-                            <td class="px-4 py-3">Ricaldo</td>
-                            <td class="px-4 py-3">Aljoneta</td>
-                            <td class="px-4 py-3">ricaldo.aljoneta@unbosque.edu.co</td>
-                            <td class="px-4 py-3">Ingeniería en deglución de penes</td>
-                            <td class="px-4 py-3">Ingeniería en deglución de culos</td>
-                            <td class="px-4 py-3 flex items-center justify-end">
-                                <button id="dropdown-button"
-                                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none"
-                                    (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin
-                                    #trigger="cdkOverlayOrigin">
-                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                    </svg>
-                                </button>
-
-                                <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger"
-                                    [cdkConnectedOverlayOpen]="isOpen">
-                                    <div id="dropdown"
-                                        class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
-                                        <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
-                                            <li>
-                                                <a class="block py-2 px-4 hover:bg-gray-100 clickable-link">Descargar
-                                                    documentos</a>
-                                            </li>
-                                        </ul>
-                                        <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
-                                            <li>
-                                                <a class="block py-2 px-4 hover:bg-gray-100 clickable-link"
-                                                    (click)="toggleHomologationOverlay(); isOpen=false">Gestionar
-                                                    homologación</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </ng-template>
-                            </td>
-                        </tr>
+                        <ng-container *ngFor="let userProcess of listUserProcess">
+                            <tr class="border-b">
+                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{userProcess.id}}</th>
+                                <td class="px-4 py-3">{{userProcess.nombre}}</td>
+                                <td class="px-4 py-3">{{userProcess.apellido}}</td>
+                                <td class="px-4 py-3">{{userProcess.email}}</td>
+                                <td class="px-4 py-3">{{userProcess.programa_interes}}</td>
+                                <td class="px-4 py-3">{{userProcess.programa_procedencia}}</td>
+                                <td class="px-4 py-3 flex items-center justify-end">
+                                    <button id="dropdown-button"
+                                        class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none"
+                                        (click)="userProcess.isOpen = !userProcess.isOpen" type="button" cdkOverlayOrigin
+                                        #trigger="cdkOverlayOrigin">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+    
+                                    <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger"
+                                        [cdkConnectedOverlayOpen]="userProcess.isOpen ? userProcess.isOpen:false" (overlayOutsideClick)="userProcess.isOpen = !userProcess.isOpen">
+                                        <div id="dropdown"
+                                            class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
+                                            <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
+                                                <li>
+                                                    <a class="block py-2 px-4 hover:bg-gray-100 clickable-link">Descargar
+                                                        documentos</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
+                                                <li>
+                                                    <a class="block py-2 px-4 hover:bg-gray-100 clickable-link"
+                                                        (click)="toggleHomologationOverlay(); userProcess.isOpen=false">Gestionar
+                                                        homologación</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        
                     </tbody>
                 </table>
             </div>

@@ -19,7 +19,6 @@ export class CardviewHomologationComponent implements OnInit{
     const local = localStorage.getItem('UserLogin')
     const userN = JSON.parse(local ? local : "")
     this.userService.getHomologationsByUserId(userN.id).subscribe(response => {
-      console.log(response)
       this.listHomologations = response.data;
     });
   }
