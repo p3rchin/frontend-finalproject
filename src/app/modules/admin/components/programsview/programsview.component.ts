@@ -21,4 +21,14 @@ export class ProgramsviewComponent {
     });
   }
 
+  isOpen = false;
+
+  mouseEnter() {
+    this.isOpen = true;
+  }
+
+  mouseLeave() {
+    this.isOpen = false;
+  }
+
 }

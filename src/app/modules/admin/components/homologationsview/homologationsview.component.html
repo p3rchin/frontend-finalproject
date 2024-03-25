@@ -31,16 +31,16 @@
                             <th scope="col" class="px-4 py-3">Correo del estudiante</th>
                             <th scope="col" class="px-4 py-3">Programa de procedencia</th>
                             <th scope="col" class="px-4 py-3">Programa de interés</th>
-
                             <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
+                                <span class="sr-only">Acciones</span>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <ng-container *ngFor="let userProcess of listUserProcess">
                             <tr class="border-b">
-                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{{userProcess.id}}</th>
+                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
+                                    {{userProcess.id}}</th>
                                 <td class="px-4 py-3">{{userProcess.nombre}}</td>
                                 <td class="px-4 py-3">{{userProcess.apellido}}</td>
                                 <td class="px-4 py-3">{{userProcess.email}}</td>
@@ -49,17 +49,17 @@
                                 <td class="px-4 py-3 flex items-center justify-end">
                                     <button id="dropdown-button"
                                         class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none"
-                                        (click)="userProcess.isOpen = !userProcess.isOpen; saveId(userProcess.id_estudiante)" type="button" cdkOverlayOrigin
-                                        #trigger="cdkOverlayOrigin">
+                                        (click)="userProcess.isOpen = !userProcess.isOpen; saveId(userProcess.id_estudiante)"
+                                        type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
                                         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                         </svg>
                                     </button>
-    
                                     <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger"
-                                        [cdkConnectedOverlayOpen]="userProcess.isOpen ? userProcess.isOpen:false" (overlayOutsideClick)="userProcess.isOpen = !userProcess.isOpen">
+                                        [cdkConnectedOverlayOpen]="userProcess.isOpen ? userProcess.isOpen:false"
+                                        (overlayOutsideClick)="userProcess.isOpen = !userProcess.isOpen">
                                         <div id="dropdown"
                                             class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
                                             <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
@@ -80,7 +80,6 @@
                                 </td>
                             </tr>
                         </ng-container>
-                        
                     </tbody>
                 </table>
             </div>
@@ -146,8 +145,8 @@
         <div class="relative p-4 w-full max-w-md max-h-full bg-white rounded-lg shadow">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                 <div class="flex-1 text-center">
-                <span class="text-lg font-semibold text-gray-900 text-center">Homologación de materias</span>
-            </div>
+                    <span class="text-lg font-semibold text-gray-900 text-center">Homologación de materias</span>
+                </div>
                 <button (click)="isOpenHomologation = false; removeSubjects()" type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -163,10 +162,12 @@
                     <div class="grid gap-4 mb-4 grid-cols-2 items-end">
                         <div class="col-span-2 sm:col-span-1">
                             <label for="materia" class="block text-sm font-medium text-gray-900">Materia</label>
-                            <select [(ngModel)]="subject.subject" id="materia" class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg">
+                            <select [(ngModel)]="subject.subject" id="materia"
+                                class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg">
                                 <option value="">Seleccione un programa</option>
-                                <option *ngFor="let materia of listSubjects" [value]="materia.id">{{materia.nombre}}</option>
-                           
+                                <option *ngFor="let materia of listSubjects" [value]="materia.id">{{materia.nombre}}
+                                </option>
+
                             </select>
                         </div>
                         <div class="col-span-2 sm:col-span-1">
@@ -176,26 +177,30 @@
                                 placeholder="Nota obtenida">
                         </div>
                         <div class="col-span-2">
-                            <label for="observaciones" class="block text-sm font-medium text-gray-900">Observaciones</label>
+                            <label for="observaciones"
+                                class="block text-sm font-medium text-gray-900">Observaciones</label>
                             <textarea [(ngModel)]="subject.observation" id="observaciones" rows="2"
                                 class="mt-1 block w-full bg-gray-50 border border-gray-300 rounded-lg"
                                 placeholder="Observaciones"></textarea>
                         </div>
-                      
+
                     </div>
-                    <button (click)="removeSubject(subject.id)" type="button" class="w-full mb-3 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
+                    <button (click)="removeSubject(subject.id)" type="button"
+                        class="w-full mb-3 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
                         - Eliminar materia
-                      </button>
+                    </button>
                 </ng-container>
-                
+
                 <div class="flex justify-between mt-2">
-                    <button (click)="addSubject()" type="button" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
-                      + Añadir materia
+                    <button (click)="addSubject()" type="button"
+                        class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
+                        + Añadir materia
                     </button>
-                    <button (click)="homologationGrades()" class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                      Homologar materias
+                    <button (click)="homologationGrades()"
+                        class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Homologar materias
                     </button>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
