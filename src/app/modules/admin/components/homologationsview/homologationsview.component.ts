@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Homologacion, HomologacionesRequest, HomologationCreate } from 'src/app/interfaces/homologations';
+import { Homologacion, HomologacionesRequest, HomologationCreate, Homologations } from 'src/app/interfaces/homologations';
 import { Subjects } from 'src/app/interfaces/subjects';
 import { UserProcess } from 'src/app/interfaces/user';
 import { HomologationsService } from 'src/app/services/homologations.service';
@@ -43,6 +43,7 @@ export class HomologationsviewComponent {
   idSeleccionado: number
   listSubjects: Subjects[] = [];
   listUserProcess: UserProcess[] = [];
+  listHomologations: Homologations[] = [];
   isOpen = false;
   isOpenHomologation = false;
   listSubject: Subject[] = [
@@ -54,7 +55,7 @@ export class HomologationsviewComponent {
     },
   ]
   constructor(
-    private userService: UserService, 
+    private userService: UserService,
     private subjectsService: SubjectsService,
     private homologationService: HomologationsService) {
 
@@ -73,8 +74,9 @@ export class HomologationsviewComponent {
     this.subjectsService.getSubjects().subscribe(response => {
       this.listSubjects = response.data;
     });
-
-
+    this.homologationService.getHomologations().subscribe(response => {
+      this.listHomologations = response.data;
+    });
   }
 
   addSubject() {
@@ -114,23 +116,49 @@ export class HomologationsviewComponent {
     ]
   }
 
+  removeDuplicateSubjects(): Subject[] {
+    const subjectsSet = new Set<number>();
+    const uniqueSubjects: Subject[] = [];
+    for (const item of this.listSubject) {
+      if (!subjectsSet.has(item.subject)) {
+        subjectsSet.add(item.subject);
+        uniqueSubjects.push(item);
+      }
+    }
+    return uniqueSubjects;
+  }
+
   homologationGrades() {
     let homologations: HomologacionesRequest = {
       homologaciones: [],
     }
+    this.listSubject = this.removeDuplicateSubjects();
     this.listSubject.map(item => {
-      const homologation: Homologacion = {
-        id_estudiante: this.idSeleccionado,
-        id_materia: item.subject,
-        nota: item.grade.toString(),
-        observacion: item.observation,
+      let homologation: Homologacion = {
+        id_estudiante: 1,
+        id_materia: 1,
+        nota: "4",
+        observacion: "nota ejemplo",
+      };
+      for (let i = 0; i < this.listHomologations.length; i++) {
+        if (item.subject === this.listHomologations[i].id_materia && this.idSeleccionado === this.listHomologations[i].id_estudiante) {
+          alert("Esta materia ya está homologada: " + this.listHomologations[i].nombre_materia)
+          return;
+        } else {
+          homologation = {
+            id_estudiante: this.idSeleccionado,
+            id_materia: item.subject,
+            nota: item.grade.toString(),
+            observacion: item.observation,
+          }
+        }
       }
       homologations.homologaciones.push(homologation);
     })
     this.homologationService.createHomologations(homologations).subscribe({
       next: (data) => {
-        if(data.result){
-          console.log('Creado correactemente')
+        if (data.result) {
+          console.log('Creado correctamente')
           this.isOpenHomologation = false;
         }
       },
@@ -138,7 +166,5 @@ export class HomologationsviewComponent {
 
       }
     })
-
   }
-
 }

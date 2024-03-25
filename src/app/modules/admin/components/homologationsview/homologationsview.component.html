@@ -40,7 +40,7 @@
                         <ng-container *ngFor="let userProcess of listUserProcess">
                             <tr class="border-b">
                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
-                                    {{userProcess.id}}</th>
+                                    {{userProcess.id_estudiante}}</th>
                                 <td class="px-4 py-3">{{userProcess.nombre}}</td>
                                 <td class="px-4 py-3">{{userProcess.apellido}}</td>
                                 <td class="px-4 py-3">{{userProcess.email}}</td>
@@ -64,7 +64,7 @@
                                             class="z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
                                             <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdown-button">
                                                 <li>
-                                                    <a class="block py-2 px-4 hover:bg-gray-100 clickable-link">Descargar
+                                                    <a [href]="'http://127.0.0.1:8000/api/procesos/downloadFiles?id='+userProcess.id_estudiante" target="_blank" class="block py-2 px-4 hover:bg-gray-100 clickable-link">Descargar
                                                         documentos</a>
                                                 </li>
                                             </ul>

@@ -1,14 +1,16 @@
 export interface Homologations {
     id: number;
-    idEstudiante: number;
-    idMateria: number;
+    id_estudiante: number;
+    id_materia: number;
     nota: string;
     observacion: string;
     estado: string;
     activo: number;
     created_at: string;
-    updated_at: string;
+    updated_at: string; 
+    nombre_materia: string; 
 }
+
 export interface HomologationView {
     id: number;
     id_estudiante: number;
