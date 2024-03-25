@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 import { FormsModule } from '@angular/forms';
+import {DialogModule} from '@angular/cdk/dialog';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
@@ -15,6 +16,7 @@ import { StudentsviewComponent } from './components/studentsview/studentsview.co
 import { StudentsComponent } from './pages/students/students.component';
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { ProgramsviewComponent } from './components/programsview/programsview.component';
+import { PopupSubjectComponent } from './components/popup-subject/popup-subject.component';
 
 
 
@@ -29,6 +31,7 @@ import { ProgramsviewComponent } from './components/programsview/programsview.co
     StudentsComponent,
     ProgramsComponent,
     ProgramsviewComponent,
+    PopupSubjectComponent,
 
   ],
   imports: [
@@ -36,7 +39,8 @@ import { ProgramsviewComponent } from './components/programsview/programsview.co
     AdminRoutingModule,
     OverlayModule,
     NgApexchartsModule,
-    FormsModule
+    FormsModule,
+    DialogModule
   ]
 })
 export class AdminModule {
