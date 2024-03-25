@@ -39,53 +39,76 @@
                                 <td class="px-4 py-3">{{program.nombre}}</td>
                                 <td class="px-4 py-3">{{program.activo}}</td>
                                 <td class="px-4 py-3">
-                                    <button data-dropdown-toggle="dropdown-user" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()" #trigger="cdkOverlayOrigin" cdkOverlayOrigin type="button"
+                                    <button data-dropdown-toggle="dropdown-user"  (click)="isOpen = !isOpen" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+                                        type="button"
                                         class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
                                         Ver materias
                                     </button>
                                 </td>
                             </tr>
-                            <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
-                                <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-300 rounded-lg shadow-lg" id="lista-materias"
-                                     data-popper-placement="bottom">
-                                    <div class="px-4 py-3" role="none">
-                                        <p class="text-lg font-semibold text-gray-900" role="none">
-                                          Lista de materias
-                                        </p>
+                            <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger"
+                                [cdkConnectedOverlayOpen]="isOpen">
+                                <div id="timeline-modal" tabindex="-1" aria-hidden="true"
+                                    class="flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 items-center justify-center w-full h-full md:inset-0">
+                                    <div class="relative p-4 w-full max-w-md h-auto">
+                                        <div class="relative bg-white rounded-lg shadow">
+                                            <div class="flex items-center justify-between p-5 border-b rounded-t">
+                                                <h3 class="text-xl font-medium text-gray-900">
+                                                    Lista de materias
+                                                </h3>
+                                                <button (click)="isOpen = false" type="button"
+                                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ms-auto inline-flex items-center"
+                                                    data-modal-toggle="timeline-modal">
+                                                    <svg class="w-5 h-5" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    </svg>
+                                                    <span class="sr-only">Cerrar</span>
+                                                </button>
+                                            </div>
+                                            <div class="p-5">
+                                                <ol
+                                                    class="relative border-l border-gray-200 dark:border-gray-600 ml-4 space-y-4">
+                                                    <li class="ml-4">
+                                                        <div class="flex items-start">
+                                                            <span
+                                                                class="flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full ring-8 ring-white">
+                                                                <span class="text-xs">1</span>
+                                                            </span>
+                                                            <div class="ml-4">
+                                                                <h3 class="text-lg font-semibold text-gray-900">
+                                                                    Introducción a la Programación</h3>
+                                                                <p class="text-sm text-gray-500">Créditos: 4</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="ml-4">
+                                                        <div class="flex items-start">
+                                                            <span
+                                                                class="flex items-center justify-center w-6 h-6 bg-blue-100 text-blue-800 rounded-full ring-8 ring-white">
+                                                                <span class="text-xs">2</span>
+                                                            </span>
+                                                            <div class="ml-4">
+                                                                <h3 class="text-lg font-semibold text-gray-900">Cálculo
+                                                                    diferencial</h3>
+                                                                <p class="text-sm text-gray-500">Créditos: 5</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <ul class="py-1" role="none">
-                                        <li class="px-4 py-2">
-                                           <span class="block text-sm text-gray-900">Materia: </span>
-                                           <span class="block text-sm font-medium text-gray-700">Cálculo Diferencial</span>
-                                        </li>
-                                        <li class="px-4 py-2">
-                                           <span class="block text-sm text-gray-900">Créditos: </span>
-                                           <span class="block text-sm font-medium text-gray-700">4</span>
-                                        </li>
-                                        <li class="px-4 py-2">
-                                           <span class="block text-sm text-gray-900">Semestre: </span>
-                                           <span class="block text-sm font-medium text-gray-700">1</span>
-                                        </li>
-                                        <li class="px-4 py-2">
-                                           <span class="block text-sm text-gray-900">Materia: </span>
-                                           <span class="block text-sm font-medium text-gray-700">Álgebra Lineal</span>
-                                        </li>
-                                        <li class="px-4 py-2">
-                                           <span class="block text-sm text-gray-900">Créditos: </span>
-                                           <span class="block text-sm font-medium text-gray-700">4</span>
-                                        </li>
-                                        <li class="px-4 py-2">
-                                           <span class="block text-sm text-gray-900">Semestre: </span>
-                                           <span class="block text-sm font-medium text-gray-700">1</span>
-                                        </li>
-                                    </ul>
                                 </div>
-                            </ng-template>         
+                            </ng-template>
                         </ng-container>
                     </tbody>
                 </table>
             </div>
-            
+
             <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
                 aria-label="Table navigation">
                 <span class="text-sm font-normal text-gray-500">
