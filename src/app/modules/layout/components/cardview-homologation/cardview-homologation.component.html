@@ -7,39 +7,39 @@
       </p>
     </div>
     <div class="grid gap-8 mb-8 md:grid-cols-2">
+      <!-- Certificado de notas -->
       <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
         <span class="text-lg font-bold text-gray-800 mb-2 text-center">Certificado de notas y créditos académicos</span>
         <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
-        <input type="file" id="fileInput1" class="hidden" accept=".pdf" />
-        <!-- Botón editar modificando su función para abrir el selector de archivos -->
-        <button onclick="document.getElementById('fileInput1').click();" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+        <input type="file" #fileInputNotas class="hidden" accept=".pdf" (change)="uploadFile($event, 'ruta_certificado_notas')" />
+        <button (click)="openFileInput(fileInputNotas)" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
           Editar
         </button>
       </div>
+      <!-- Contenido del programa -->
       <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
         <span class="text-lg font-bold text-gray-800 mb-2 text-center">Contenido del programa de procedencia</span>
         <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
-        <input type="file" id="fileInput1" class="hidden" accept=".pdf" />
-        <!-- Botón editar modificando su función para abrir el selector de archivos -->
-        <button onclick="document.getElementById('fileInput1').click();" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+        <input type="file" #fileInputContenido class="hidden" accept=".pdf" (change)="uploadFile($event, 'ruta_contenido_programa')" />
+        <button (click)="openFileInput(fileInputContenido)" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
           Editar
         </button>
       </div>
+      <!-- Certificado de conducta -->
       <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
         <span class="text-lg font-bold text-gray-800 mb-2 text-center">Certificado de buena conducta</span>
         <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
-        <input type="file" id="fileInput1" class="hidden" accept=".pdf" />
-  <!-- Botón editar modificando su función para abrir el selector de archivos -->
-  <button onclick="document.getElementById('fileInput1').click();" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-    Editar
-  </button>
+        <input type="file" #fileInputConducta class="hidden" accept=".pdf" (change)="uploadFile($event, 'ruta_certificado_conducta')" />
+        <button (click)="openFileInput(fileInputConducta)" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+          Editar
+        </button>
       </div>
+      <!-- Solicitud motivada -->
       <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
         <span class="text-lg font-bold text-gray-800 mb-2 text-center">Solicitud escrita y motivada del proceso</span>
         <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
-        <input type="file" id="fileInput1" class="hidden" accept=".pdf" />
-        <!-- Botón editar modificando su función para abrir el selector de archivos -->
-        <button onclick="document.getElementById('fileInput1').click();" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+        <input type="file" #fileInputSolicitud class="hidden" accept=".pdf" (change)="uploadFile($event, 'ruta_solicitud_motivacion')" />
+        <button (click)="openFileInput(fileInputSolicitud)" class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
           Editar
         </button>
       </div>
@@ -57,7 +57,6 @@
       </p>
     </div>
     <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-      <!-- Suponiendo la iteración sobre las homologaciones con *ngFor -->
       <ng-container *ngFor="let card of listHomologations">
         <app-repeat-card [homologation]="card"></app-repeat-card>
       </ng-container>

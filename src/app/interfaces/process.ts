@@ -13,6 +13,14 @@ export interface Process {
     updated_at: string;
 }
 
+export interface UpdateFilesData {
+    idEstudiante: number;
+    rutaCertificadoNotas?: File;
+    rutaContenidoPrograma?: File;
+    rutaCertificadoConducta?: File;
+    rutaSolicitudMotivacion?: File;
+  }
+
 export interface startProcess extends Omit<Process, "rutaCertificadoNotas" | "rutaContenidoPrograma" | "rutaCertificadoConducta" | "rutaSolicitudMotivacion" | "activo" | "created_at" | "updated_at"> {
 
     rutaCertificadoNotas: File;

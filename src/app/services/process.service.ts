@@ -1,8 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ResponseList, ResponseObject } from '../interfaces/responses';
-import { startProcess } from '../interfaces/process';
+import { UpdateFilesData, startProcess } from '../interfaces/process';
 
 
 @Injectable({
@@ -24,7 +24,11 @@ export class ProcessService {
     formData.append('id_estudiante', process.idEstudiante.toString());
     return this.http.post<any>(url, formData);
   }
-
+  
+  updateFiles(formData: FormData): Observable<HttpResponse<any>> {
+    const url = 'http://127.0.0.1:8000/api/procesos/updateFiles';
+    return this.http.post<HttpResponse<any>>(url, formData, { observe: 'response' });
+  }
   // downloadFiles(id: number): Observable<ResponseList<HomologationView>> {
   //   const url = `http://127.0.0.1:8000/api/user/viewHomologations`;
   //   let params = new HttpParams();
