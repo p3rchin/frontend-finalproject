@@ -24,7 +24,7 @@ export class ProcessService {
     formData.append('id_estudiante', process.idEstudiante.toString());
     return this.http.post<any>(url, formData);
   }
-  
+
   updateFiles(formData: FormData): Observable<HttpResponse<any>> {
     const url = 'http://127.0.0.1:8000/api/procesos/updateFiles';
     return this.http.post<HttpResponse<any>>(url, formData, { observe: 'response' });
@@ -35,4 +35,6 @@ export class ProcessService {
   //   params = params.append('id', id);
   //   return this.http.get<ResponseList<HomologationView>>(url, { params: params })
   // }
+
+  //
 }
