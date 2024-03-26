@@ -1,19 +1,78 @@
 <section class="bg-white mt-28">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-      <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-        <span class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Homologaciones</span>
-        <p class="font-light text-gray-500 sm:text-xl">
-          Explora las homologaciones que tienes actualmente asociadas con nuestra institución.
-        </p>
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
+      <span class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Gestión de Documentos</span>
+      <p class="font-light text-gray-500 sm:text-xl">
+        Administra y actualiza tus documentos fácilmente.
+      </p>
+    </div>
+    <div class="grid gap-8 mb-8 md:grid-cols-2">
+      <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
+        <span class="text-lg font-bold text-gray-800 mb-2 text-center">Certificado de notas y créditos académicos</span>
+        <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
+        <div class="flex gap-2">
+          <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+            Descargar
+          </button>
+        <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+          Editar
+        </button>
       </div>
-      <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-        <!-- Tarjeta de homologación 1 -->
-        <ng-container *ngFor="let card of listHomologations">
-          <app-repeat-card [homologation]="card"></app-repeat-card>
-        </ng-container>
-        
-
+      </div>
+      <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
+        <span class="text-lg font-bold text-gray-800 mb-2 text-center">Contenido del programa de procedencia</span>
+        <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
+        <div class="flex gap-2">
+          <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+            Descargar
+          </button>
+        <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+          Editar
+        </button>
+      </div>
+      </div>
+      <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
+        <span class="text-lg font-bold text-gray-800 mb-2 text-center">Certificado de buena conducta</span>
+        <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
+        <div class="flex gap-2">
+          <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+            Descargar
+          </button>
+        <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+          Editar
+        </button>
+      </div>
+      </div>
+      <div class="flex flex-col items-center p-4 bg-white shadow rounded-lg">
+        <span class="text-lg font-bold text-gray-800 mb-2 text-center">Solicitud escrita y motivada del proceso</span>
+        <p class="text-sm text-gray-500 mb-4">archivo.pdf</p>
+        <div class="flex gap-2">
+          <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700">
+            Descargar
+          </button>
+        <button class="mt-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+          Editar
+        </button>
+      </div>
       </div>
     </div>
-  </section>
-  
+    <div class="text-center">
+      <button class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+        Descargar todos
+      </button>
+    </div>
+    <div class="my-12 border-t border-gray-200"></div>
+    <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-16">
+      <span class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Homologaciones</span>
+      <p class="font-light text-gray-500 sm:text-xl">
+        Explora las homologaciones que tienes actualmente asociadas con nuestra institución.
+      </p>
+    </div>
+    <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+      <!-- Suponiendo la iteración sobre las homologaciones con *ngFor -->
+      <ng-container *ngFor="let card of listHomologations">
+        <app-repeat-card [homologation]="card"></app-repeat-card>
+      </ng-container>
+    </div>
+  </div>
+</section>
